@@ -1,4 +1,9 @@
 import z from "zod";
+import logger from "../utils/logger";
+import dotenv from "dotenv";
+
+dotenv.config({ path: ".env" });
+
 
 const envSchema = z.object({
     PORT: z.string().transform(Number).default(3000),
@@ -12,7 +17,7 @@ function createEnv(env: NodeJS.ProcessEnv) {
     const validationResult = envSchema.safeParse(env); // parse the env
 
     if (!validationResult.success) { // if Invalid
-        console.error("Invalid environment variables:", validationResult.error.message);
+        logger.error("Invalid environment variables:", validationResult.error.message);
         throw new Error("Invalid environment variables: " + validationResult?.error.message);
     }
     return validationResult.data;
