@@ -2,20 +2,19 @@ import http from 'http';
 import app from './app';
 import { env } from './config/env';
 import logger from './utils/logger';
-import mongoose from 'mongoose';
 import { Server as SocketIOServer } from 'socket.io';
 import { connectDB } from './config/connectDB';
 
-const server = http.createServer(app);
-const io = new SocketIOServer(server, { cors: { origin: '*' } });
+const server = http.createServer(app); // Create HTTP server
+const io = new SocketIOServer(server, { cors: { origin: '*' } }); // Create Socket.io server
 
-// Connect to Database (mongoDB)
+// connect to Database (mongoDB)
 connectDB();
 
-// Start HTTP + Socket.io server
+// listen on port
 server.listen(env.PORT, () => {
     logger.info(`Server running on port ${env.PORT}`);
 });
 
-// Export io for socket handlers
+// export io for socket handlers
 export { io };
