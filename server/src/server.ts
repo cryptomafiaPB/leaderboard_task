@@ -4,9 +4,10 @@ import { env } from './config/env';
 import logger from './utils/logger';
 import { Server as SocketIOServer } from 'socket.io';
 import { connectDB } from './config/connectDB';
+import './sockets/leaderboardSocket';
 
-const server = http.createServer(app); // Create HTTP server
-const io = new SocketIOServer(server, { cors: { origin: '*' } }); // Create Socket.io server
+const server = http.createServer(app); // create HTTP server
+const io = new SocketIOServer(server, { cors: { origin: '*' } }); // create Socket.io server
 
 // connect to Database (mongoDB)
 connectDB();

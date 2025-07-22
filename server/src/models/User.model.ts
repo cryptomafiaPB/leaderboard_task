@@ -8,6 +8,7 @@ export interface IUser extends Document {
     updatedAt: Date;
 }
 
+// user schema
 const UserSchema = new Schema<IUser>(
     {
         name: { type: String, required: true, trim: true },
@@ -22,6 +23,7 @@ UserSchema.statics.incrementPoints = async function (
     userId: string,
     points: number
 ): Promise<number> {
+    // find user by id and increment points
     const user = await this.findByIdAndUpdate(
         userId,
         { $inc: { totalPoints: points } },

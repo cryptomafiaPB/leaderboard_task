@@ -6,6 +6,7 @@ const logFormat = printf(({ level, message, timestamp }) => {
     return `${timestamp} [${level}]: ${message}`;
 });
 
+// create logger
 const logger = createLogger({
     level: 'info',
     format: combine(
