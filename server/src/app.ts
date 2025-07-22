@@ -15,6 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/api/users', userRoutes);
 app.use('/api/users', claimRoutes);    // mount claim under users
+// app.use('/api/users', historyRoutes);
 app.use('/api/leaderboard', leaderboardRoutes);
 
 // global error handler

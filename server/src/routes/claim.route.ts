@@ -3,6 +3,7 @@ import { claimPoints } from '../controllers/claim.controller';
 import { validateRequest } from '../middleware/validateRequest';
 import { z } from 'zod';
 import { claimRateLimiter } from '../middleware/rateLimiter';
+import { historyById } from '../controllers/history.controller';
 
 const router = Router();
 
@@ -12,5 +13,6 @@ const claimSchema = z.object({
 });
 
 router.post('/:id/claim', claimRateLimiter, validateRequest(claimSchema), claimPoints);
+router.get('/:id/history', historyById);
 
 export default router;

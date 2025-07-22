@@ -12,9 +12,6 @@ export const validateRequest = (schema: ZodObject) => (req: Request, res: Respon
         next();
     } catch (err) { // if validation fails
         const error = err as any;
-        return res.status(400).json({
-            status: 'error',
-            errors: error.format(),
-        });
+        next(error);
     }
 };
