@@ -23,13 +23,13 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-golden-light to-golden-secondary">
       {/* Header Navigation */}
-      <div className="flex items-center justify-between p-4 pt-6">
+      <div className="flex items-center justify-between p-4 pt-6 ">
         <ArrowLeft className="w-6 h-6 text-gray-700" />
-        <div className="flex space-x-2 sm:space-x-6">
-          <span className="text-center text-sm text-gray-600">Party Ranking</span>
-          <span className="text-center text-sm font-medium text-gray-800 border-b-2 border-yellow-400 pb-1">Live Ranking</span>
-          <span className="text-center text-sm text-gray-600">Hourly Ranking</span>
-          <span className="text-center text-sm text-gray-600">Family Ranking</span>
+        <div className="flex space-x-2 sm:space-x-6 sm:bg-white sm:shadow-md sm:rounded-full sm:mb-4 sm:px-4 sm:py-2">
+          <span className="text-center text-sm text-gray-600 hover:border-b-2 border-yellow-400 pb-1 transition-all cursor-pointer">Party Ranking</span>
+          <span className="text-center text-sm font-medium text-gray-800 border-b-2 border-yellow-400 pb-1 cursor-pointer">Live Ranking</span>
+          <span className="text-center text-sm text-gray-600 hover:border-b-2 border-yellow-400 pb-1 transition-all cursor-pointer">Hourly Ranking</span>
+          <span className="text-center text-sm text-gray-600 hover:border-b-2 border-yellow-400 pb-1 transition-all cursor-pointer">Family Ranking</span>
         </div>
         <HelpCircle className="w-6 h-6 text-gray-700" />
       </div>
@@ -37,7 +37,7 @@ export default function Home() {
       {/* Settlement Timer */}
       <div className="px-4 py-2">
         <div className="text-center text-sm text-gray-700 font-medium">
-          Settlement Time 2 days 01:45:41
+          Settlement Time 2 days 04:30:00
         </div>
       </div>
 

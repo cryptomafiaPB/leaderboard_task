@@ -1,6 +1,6 @@
 "use client";
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { fetchLeaderboard, fetchUsers, type User } from '../api/api';
+import { fetchClaimHistory, fetchLeaderboard, fetchUsers, type User } from '../api/api';
 import { useEffect, useState, type ReactNode } from 'react';
 import { LeaderboardContext } from './LeaderboardContextObject';
 import { io, type Socket } from 'socket.io-client';
@@ -9,6 +9,7 @@ export const LeaderboardProvider = ({ children }: { children: ReactNode }) => {
 
     const [leaderboard, setLeaderboard] = useState<User[]>([]);
     const [allUsers, setAllUsers] = useState<User[]>([]);
+    const [userHistory, setUserHistory] = useState<any[]>([]); // Adjust type as needed
     const [total, setTotal] = useState(0);
     const [page, setPage] = useState(1);
     const limit = 10;
@@ -43,6 +44,19 @@ export const LeaderboardProvider = ({ children }: { children: ReactNode }) => {
             setAllUsers(res.data.data.users);
         } catch (error: any) {
             setError(error.message || 'Failed to load users');
+        }
+    };
+
+    const fetchUserHistory = async (userId: string) => {
+        setLoading(true);
+        try {
+            const res = await fetchClaimHistory(userId, 1, 10);
+            setUserHistory(res.data.data.history);
+            // Process user history data
+        } catch (error: any) {
+            setError(error.message || 'Failed to load user history');
+        } finally {
+            setLoading(false);
         }
     };
 
