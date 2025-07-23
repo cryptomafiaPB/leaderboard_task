@@ -5,7 +5,6 @@ import Podium from "./components/Podium";
 import UserSelector from "./components/UserSelector";
 import ClaimButton from "./components/ClaimButton";
 import LeaderboardList from "./components/LeaderboardList";
-import BottomBar from "./components/BottomBar";
 import AddUserModal from "./components/AddUserModal";
 import { ArrowLeft, Gift, HelpCircle, Sparkles, Trophy } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -82,8 +81,6 @@ export default function Home() {
 
 
       <LeaderboardList />
-
-      <BottomBar userId={selectedUser} users={allUsers} />
 
       <AddUserModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
 
