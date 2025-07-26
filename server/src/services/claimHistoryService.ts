@@ -9,7 +9,7 @@ export class claimHistoryService {
             .sort({ claimedAt: -1 })
             .skip(skip)
             .limit(limit)
-            .populate('userId', 'username avatarUrl totalPoints')
+            .populate('userId', 'username avatarUrl totalPoints name')
             .exec();
 
         const total = await ClaimHistory.countDocuments({ userId: userId }).exec();
